@@ -7,20 +7,20 @@ class Button extends React.Component {
   // Has to be called contextType
   static contextType = LanguageContext;
   render() {
-    const text = this.context === "english" ? "Submit" : "Voorleggen";
+    const text = this.context.language === "english" ? "Submit" : "Voorleggen";
     return <button className="ui button primary">{text}</button>;
   }
 
   /* SETUP FOR USING CONSUMER INSTEAD OF THIS.CONTEXT (USE CONSUMER WHEN ACCESSING MULTIPLE CONTEXT OBJECTS IN THE SAME COMPONENT)
 
-  renderSubmit(value) {
-    return value === 'english' ? 'Submit' : 'Voorleggen'
+  renderSubmit(language) {
+    return language === 'english' ? 'Submit' : 'Voorleggen'
   }
   render() {
     return (
       <button className="ui button primary">
         <LanguageContext.Consumer>
-          {value => this.renderSubmit(value)}
+          {({language}) => this.renderSubmit(language)}
         </LanguageContext.Consumer>
       </button>
     );
